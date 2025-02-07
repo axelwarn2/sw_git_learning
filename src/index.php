@@ -1,3 +1,6 @@
 <?php
 
-echo "Приветствую Вас!";
+require_once "./controllers/Controller.php";
+
+$controller = new Controller();
+$controller->index();
