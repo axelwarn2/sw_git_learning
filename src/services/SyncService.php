@@ -21,15 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $specializationDoctorService = new SpecializationDoctorService($pdo);
 
     try {
+        $specializationService->syncSpecialization("$crmUrl/api/v1/doctors", $apiKey);
         $serviceService->syncServices("$crmUrl/api/v1/procedures", $apiKey);
         $doctorService->syncDoctors("$crmUrl/api/v1/doctors", $apiKey);
-        $specializationService->syncSpecialization("$crmUrl/api/v1/doctors", $apiKey);
         $specializationDoctorService->syncSpecializationDoctor("$crmUrl/api/v1/doctors", $apiKey);
         $specializationServiceService->syncSpecializationService("$crmUrl/api/v1/procedures", $apiKey);
 
-//        header("Location: /");
+//    header("Location: /");
     } catch (Exception $exception) {
         die("Ошибка: {$exception}");
     }
-
 }
